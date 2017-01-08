@@ -35,7 +35,7 @@ int main() {
   cout << "------------------------" << endl;
 
   if (!hasUsers) {
-    cout << "No Pokémon in the bag" << endl;
+    cout << "No users online." << endl;
     cout << "------------------------" << endl;
     return 0;
   }
