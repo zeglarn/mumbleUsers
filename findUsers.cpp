@@ -14,15 +14,15 @@ const int STARTPOS = 32;
 void getName(string& str, string& result, int pos = STARTPOS);
 
 //Reads file and updates userMap with usernames and corresponding truth value.
-void readFile(map<string, bool>& userMap, string const& file);
+void readFile(string const& file, map<string, bool>& userMap);
 
 int main() {
   const string rotatedLog = "/var/log/mumble-server/mumble-server.log.1";
   const string log = "/var/log/mumble-server/mumble-server.log";
   map<string, bool> users;
   
-  readFile(users, rotatedLog); //Read old log first.
-  readFile(users, log); //Read current log.
+  readFile(rotatedLog, users); //Read old log first.
+  readFile(log, users); //Read current log.
 
   map<string, bool>::iterator it;
   
@@ -67,7 +67,7 @@ void getName(string& str, string& result, int pos) {
   }
 }
 
-void readFile(map<string, bool>& userMap,string const& file) {
+void readFile(string const& file, map<string, bool>& userMap) {
   ifstream logFile(file.c_str());
   string line;
   
